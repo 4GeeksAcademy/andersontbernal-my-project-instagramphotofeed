@@ -1,0 +1,180 @@
+<!DOCTYPE html> <!--abrir html 5 // paso 1-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram feed de instagram</title>
+  <!--configuro el cdn para que permita trabajar bootstrap (jav css too) // paso 2-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <!--configuro recursos externos como font awesome y google fonts. // paso 2.1-->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d40adb1550.js" crossorigin="anonymous"></script>
+<!--agregamos reglas css consultadas externamente para darle apariencia en texto y colores // paso 2.2-->
+<!--se enalazaron recursos externos, diseño y tipografia (sugerida) // verificado-->
+</head>
+<body> <!--contenido del sitio web, debe ser revisado al final para evitar errores-->
+  
+  <!--Navar-->
+  <!--//paso 3.1: navbar para aplicar estilos**navarexpand para expandir horizonatalmente**talla**bg fondo de pantalla claro**sticky-top mantiene la barra fija-->
+  <nav class="navbar navbar-expand-lg bg-light sticky-top">
+
+    <!--//paso 3.2: container-fluido permite uso todo el ancho de pantalla***mx-auto centra horizontalmente automaticamente**stule al 60% sugerencia para mejor visualizacion-->
+    <div class="container-fluid mx-auto" style="width: 60%;">
+    
+    <!-- //paso 3.3: a (anchor) que permite colocar links**navar-brand aplica apariencia de la navbar y Href sigue como enlace-->
+      <a class="navbar-brand" href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
+
+    <!--//paso 3.4: Button es boton :) ** type-button no enviara el formulario** btn opcion de bootstrap para el estilo del boton** btn-succes que es igual a verde***data-bs-toggle"modal" para abrir la ventana emergente para y que aparezca la cajita***data-bs-target="newpost" ID para que se abra al hacer click. -->
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newpost">
+        Create a new post
+      </button>
+
+    <!--// paso 3.5: dropdown activa comportamiento de menu despelegable || margin -3 para aplicar margen y seprar boton -->  
+      <div class="dropdown ms-3">
+        
+        <!-- //paso 3.6: boton para abrir el menu al hacer click || a = boton || btn estilo para color de boton de colo gris || dropdown-toggle que sirve para flechita  indicando menu desplegable || data-bs-toggle="dropdown" activa el desplegable haciendo clic-->
+        <a class="btn btn-secondary dropdown-toggle" href="#" data-bs-toggle="dropdown">
+          
+
+          <!-- //paso 3.7: icono de engranaje || i: etiqueta font awsom || fa-solid: estilo del icono || fa-gear: icono del engranaje-->
+          <i class="fa-solid fa-gear"></i>  
+        
+        </a>
+
+      <!--//paso 3.8: lista para menu desplegable || dropdown para estilo al men-->
+        <ul class="dropdown-menu">
+
+          <!--// paso 3.9: li: elementos || a-dropdown-item que da el estilo de cada opcion del menu || hr class dorpdown divider que es linea para separar || text - danger para poner rojo al texto || id log out  como identificador para aplicar css o js-->
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Accesibility</a></li>
+          <li><a class="dropdown-item" href="#">Privacy and Data</a></li>
+          <li><hr class="dropdown-divider"/></li>
+          <li><a class="dropdown-item text-danger" id="log-out" href="#">Log out</a></li>
+        </ul>
+      </div>
+     </div> 
+    </nav>
+
+    <!--modales-->
+    <!--4.1 moda que activa comportamiento y fade que agrega animacion suave || id new post: identificador del modal || tabindex: permite que el moda sea enfocable con el teclado || aria labelledby: conecta el titulo del modal con su contenido || aria-hidden: oculta el modal inicialmente-->
+    <div class="modal fade" id="newpost" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+       
+      
+      <!--4.2 modal-dialog: define la caja blanca afecta tamaño y pocision || modal content: contenido completo del modal para titulo cuerpo y pie -->
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+
+          <!--4-3 moda header: barra superior del modal || modal title; texto del titulo con tamañofs-5 pequeña || id=modalLabel; conecta con ari labell || btn close; boton para el nmodal || data bs dimiss; alhacer click cierra el modal || aria label close: texto para lectore de pantalla-->
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalLabel">Create a New Post</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          
+          <!--4.4 modal body: parte central del modal || label +textarea: campo de texto para escribir el caption || form control: clase de bootstrap para inputs | fa solid fa camera: icono de camara || icono de ubicacion | btn outline dark boton sin relleno de bode negro-->
+          <div class="modal-body">
+            <label for="caption" class="form-label">Caption</label>
+            <textarea class="form-control" id="caption" rows="3"></textarea><br />
+            <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-camera"></i></button> 
+            <button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-location-dot"></i></button>
+          </div>
+
+
+          <!-- 4.5 modal footer: parte inferior modal | btn secondary: boton close || btn success (verde) boton -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Publish</button>
+          
+          
+            
+    
+
+
+            </div> <!-- .modal-footer -->
+          </div> <!-- .modal-content -->
+        </div>  <!-- .modal-dialog -->
+      </div>  <!-- .modal -->
+    
+    <!--Buttons-->   
+    <!--//paso 5.1: m3; marge alrededor del div || d-grid; usa el sistema de css grid || gap 2: separa dos elementos hijos con un pequeño espacio | d-md block: a partir del tamaño ¿mediano en aelante los botones se comprotan como bloque || text center alinea el contenido -->  
+    <div class="m-3 d-grid gap-2 d-md-block text-center">
+      
+      <!--paso 5.2 id gridviewbtn; para activar vista en java script || btn clase de boton de bootstrap btn link: hace que el pobton parezca un enlace || title vista en cuadricula: hace que el texto apareza al pasar el mause y etiqueta I: para icono de cuadricula de font awesome -->
+      <button id="gridViewBtn" class="btn btn-link" title="Vista en cuadrícula">
+         <i class="fa-solid fa-table-cells"></i>
+      </button>
+
+
+      <!--pasoo 5.3 vista en lista, id listvietwbtn: lo usamos para activa tipo lista || fa square: icono cuadrado soildo-->
+      <button id="listViewBtn" class="btn btn-link" title="Vista en lista">
+        <i class="fa-solid fa-square"></i>
+      </button>
+      </div>
+
+
+      <!--Contender de imagenes-->
+      <!--paso 6.1 contendedor para mostrar las publicaciones ya sea en forma de cuadricula o lista-->
+      <div id="imageContainer" class="container-fluid d-grid gap-3" style="width: 60%;">
+      </div>
+
+
+      <!--bostraap para JS-->
+      <!--pasoo 7.1 agregar script para controlar visitas-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+      <!--paso 7.2script completo para cambiar vista-->
+      <script>
+      const images = [
+        { src: "https://picsum.photos/id/1015/600/400", caption: "Árboles" },
+        { src: "https://picsum.photos/id/1016/600/400", caption: "Globos" },
+        { src: "https://picsum.photos/id/1018/600/400", caption: "Comida" },
+        { src: "https://picsum.photos/id/1020/600/400", caption: "Chica" },
+        { src: "https://picsum.photos/id/1024/600/400", caption: "Señal" },
+        { src: "https://picsum.photos/id/1025/600/400", caption: "Loro" },
+        { src: "https://picsum.photos/id/1027/600/400", caption: "Ciudad" },
+        { src: "https://picsum.photos/id/1032/600/400", caption: "Hojas" },
+        { src: "https://picsum.photos/id/1035/600/400", caption: "Café" }
+      ];
+
+      const container = document.getElementById("imageContainer");
+
+      function renderGridView() {
+        container.innerHTML = `
+          <div class="row">
+            ${images.map(img => `
+              <div class="col-md-4 mb-3">
+                <img src="${img.src}" class="rounded" style="width:100%" alt="${img.caption}" />
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      function renderListView() {
+        container.innerHTML = images.map(img => `
+          <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between">
+              <span>${img.caption}</span>
+              <span>${new Date().toLocaleDateString()}</span>
+            </div>
+            <img src="${img.src}" class="card-img-top" alt="${img.caption}" />
+            <div class="card-body">
+              <p class="card-text"><strong>${Math.floor(Math.random() * 1000)} Likes</strong></p>
+              <p class="card-text">This is a sample post showing ${img.caption}.</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById("gridViewBtn").addEventListener("click", renderGridView);
+      document.getElementById("listViewBtn").addEventListener("click", renderListView);
+      renderGridView();
+
+      
+    </script>
+    </body>
+</html>
+
+<!--               GRACIAS, OTRO CODIGO UN POCO MAS CLARO!!!!!!!!!!!!!!!!-->
